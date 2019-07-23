@@ -1,0 +1,17 @@
+  GNU nano 2.7.4               Fichero: /etc/rc.local               Modificado  
+
+#
+# By default this script does nothing.
+
+# Print the IP address
+_IP=$(hostname -I) || true
+if [ "$_IP" ]; then
+  printf "My IP address is %s\n" "$_IP"
+fi
+
+python3 /home/pi/Desktop/Monitoreo\ OK/Scripts/script_rpiok.py &
+python3 /home/pi/Desktop/Monitoreo\ OK/Scripts/script_wvdial.py &
+python3 /home/pi/Desktop/Monitoreo\ OK/Scripts/script_internet.py 
+
+exit 0
+
