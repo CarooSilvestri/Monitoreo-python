@@ -1,0 +1,22 @@
+0,Reset por Power On
+01,Excedió tiempo de viaje (no leyó pantallas por mas de X seg.)
+02,Falla de partida (pantalla leida mas de 5 seg al partir)
+08,Falla en control de accionamiento / Contactor trabado 
+10,PTC activado
+11,"Reset por ILLAD, ILLOP, Low Voltage"
+12,Falla de seteo (accionamiento o seteo de variables)
+40,Seguridades puenteadas (FAP y SEG activos al abrir)
+43,EXCESO DE ARRANQUES/HORA
+46,FAP activo con SEG cerradas (al cerrar)
+52,Ambos sincronismos activados al mismo tiempo
+53,Sincronismo UP activado siempre (falla en sincronismo)
+54,Sincronismo DN activado siempre (falla en sincronismo)
+55,Leyo y perdio sincronismo DN
+56,Leyo y perdio sincronismo UP
+68,Cabezal CLS no funciona
+69,Cabezal CLB no funciona
+70,Cabezal siempre encendido
+82,Direccion de viaje incorrecta
+84,3 paradas anormales consecutivas
+90,Manual
+91,Fuerza Motriz Emergencia activada (EPD activado)

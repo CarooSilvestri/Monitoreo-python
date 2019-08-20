@@ -11,7 +11,7 @@ import time
 
 class Mail:
 	
-	def __init__(self, to, subject):
+	def __init__(self, to, subject = "Fallas" + " " + time.strftime("%d%m%y")):
 
 		 # create message object instance
 		self.msg = MIMEMultipart()
@@ -20,7 +20,7 @@ class Mail:
 		self.password = "edi@pru01"
 		self.msg['From'] = "edificio.prueba01@gmail.com"
 		self.msg['To'] = to
-		self.msg['Subject'] =  "Fallas " + time.strftime("%d/%m/%y")
+		self.msg['Subject'] =  subject
 		self.server = None
 		
 	def create_initialize_server(self):
@@ -31,17 +31,16 @@ class Mail:
 		 # starts the server
 		self.server.starttls()
 		
-	def attach_file(self):
+	def attach_file(self, name_f="Fallas" + " " + time.strftime("%d%m%y") + ".csv"):
 		
 		# attach file to message body
 		try:
 			rut = "/home/pi/Desktop/Monitoreo OK/fallas/"
-			filename = "Fallas" + " " + time.strftime("%d%m%y") + ".csv"
-			f = open(rut + filename, 'r')
+			f = open(rut + name_f, 'r')
 			attachment = MIMEBase('application','octet-stream')
 			attachment.set_payload(f.read())
 			f.close()
-			attachment.add_header('Content-Disposition', 'attachment', filename=filename)           
+			attachment.add_header('Content-Disposition', 'attachment', filename=name_f)          
 			self.msg.attach(attachment)
 		except:
 			self.attach_cuerpo("No se registraron fallas en el día. Puede eliminar el mensaje.")

@@ -3,9 +3,7 @@
 import serial
 import csv
 import time
-import subprocess
-
-#~ from twilio.rest import Client
+from twilio.rest import Client
 
 #------------------------------ AUXILIARES
 
@@ -63,13 +61,23 @@ def LeoPort():
 			p1 = str(int.from_bytes(v[1], byteorder='big'))
 			p2 = str(int.from_bytes(v[2], byteorder='big'))
 			p3 = str(int.from_bytes(v[3], byteorder='big'))
-			
+				
 			if (v[0] == b'S' and v[6] == b'\xaa'):
-				
-				subprocess.check_call(["python", "/home/pi/Desktop/Monitoreo OK/whatsapp.py", p1, p2, p3])
+						
 				write_file(ARCHIVO, p1, p2, p3)
-				ARCHIVO.cerrar_archivo()     #cierra el archivo
 				
+				# client credentials are read from TWILIO_ACCOUNT_SID and AUTH_TOKEN
+				#client = Client()
+
+				# this is the Twilio sandbox testing number
+				#from_whatsapp_number='whatsapp:+14155238886'
+				# replace this number with your own WhatsApp Messaging number
+				#to_whatsapp_number='whatsapp:+5491138505351'
+
+				#client.messages.create(body='Edificio01: Ascensor 3 falla 02',
+						      # from_=from_whatsapp_number,
+						       #to=to_whatsapp_number)
+				ARCHIVO.cerrar_archivo()     #cierra el archivo
 					
 	except:
 		pass
@@ -77,7 +85,7 @@ def LeoPort():
 def main():
 	
 	while 1:
-	
+    
 		LeoPort()                 #lee continuamente puerto COM
 
 main()
