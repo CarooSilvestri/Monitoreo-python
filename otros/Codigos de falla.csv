@@ -1,4 +1,4 @@
-0,Reset por Power On
+00,Reset por Power On
 01,Excedió tiempo de viaje (no leyó pantallas por mas de X seg.)
 02,Falla de partida (pantalla leida mas de 5 seg al partir)
 08,Falla en control de accionamiento / Contactor trabado 

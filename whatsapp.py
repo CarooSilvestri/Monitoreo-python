@@ -4,6 +4,7 @@ import sys
 
 ASCENSOR = sys.argv[1]
 EVENTO = sys.argv[2]
+print(len(sys.argv[2]))
 POS = sys.argv[3]
 
 all_fallas = {}
@@ -26,21 +27,18 @@ client = Client()
 
 # this is the Twilio sandbox testing number
 from_whatsapp_number='whatsapp:+14155238886'
-# replace this number with your own WhatsApp Messaging number
 to_whatsapp_number='whatsapp:+5491138505351'
+
+aux = EVENTO
+if(len(EVENTO) == 1): EVENTO = '0' + str(aux)
 
 if (EVENTO in all_fallas):
     
-    msg = 'Edificio01: Ascensor ' + ASCENSOR + ', Evento ' + EVENTO + ' - ' + all_fallas[EVENTO] + ', Pos ' + POS
+    msg_evento =', Evento ' + EVENTO + ' - ' + all_fallas[EVENTO]
+    msg = 'Edificio01: Ascensor ' + ASCENSOR + msg_evento + ', Pos ' + POS
     client.messages.create(body=msg,
 						   from_=from_whatsapp_number,
 						   to=to_whatsapp_number)
 
-#AC8717a1063bb406bddc1be30d1a2e47e1  	#account sid
 
-#c978c745c1ab7aed2df4b8bb9b5f1b04		#auth token
-
-#export TWILIO_ACCOUNT_SID='AC8717a1063bb406bddc1be30d1a2e47e1' # paste in Account SID between single quotes
-
-#export TWILIO_AUTH_TOKEN='c978c745c1ab7aed2df4b8bb9b5f1b04' # paste Auth Token between single quotes
 
